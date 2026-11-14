@@ -263,3 +263,28 @@ mark { background: color-mix(in srgb, var(--c4) 35%, transparent); color: inheri
 .tx-pill.ok { background: color-mix(in srgb, var(--good) 16%, var(--surface)); color: color-mix(in srgb, var(--good) 75%, var(--ink)); }
 .tx-pill.abort { background: color-mix(in srgb, var(--c1) 14%, var(--surface)); color: color-mix(in srgb, var(--c1) 75%, var(--ink)); }
 @media (max-width: 560px) { .tx-grid { font-size: 11.5px; } .tx-row { grid-template-columns: 18px 1fr 1fr; gap: 4px; } }
+
+/* ---------- observability ---------- */
+.ob-trace { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.ob-axis { position: relative; height: 22px; margin-left: 42%; border-bottom: 1px solid var(--line); font: 10px var(--mono); color: var(--ink-2); }
+.ob-axis span { position: absolute; top: 5px; transform: translateX(-50%); white-space: nowrap; }
+.ob-axis span:first-child { transform: none; } .ob-axis span:last-child { transform: translateX(-100%); }
+.ob-row { display: grid; grid-template-columns: 42% 58%; width: 100%; align-items: center; min-height: 22px; padding: 0; border: 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 50%, transparent); background: transparent; color: inherit; text-align: left; cursor: pointer; font: 11.5px var(--mono); }
+.ob-row:hover { background: var(--sunken); }
+.ob-row.hit { background: color-mix(in srgb, var(--good) 16%, var(--surface)); }
+.ob-row.miss { background: color-mix(in srgb, var(--bad) 10%, var(--surface)); }
+.ob-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding-right: 8px; }
+.ob-svc { display: inline-block; font-size: 10px; font-weight: 700; padding: 0 6px; margin: 0 6px 0 6px; border-radius: 99px; color: color-mix(in srgb, var(--pc) 80%, var(--ink)); background: color-mix(in srgb, var(--pc) 16%, transparent); }
+.ob-lane { position: relative; height: 22px; }
+.ob-bar { position: absolute; top: 6px; height: 10px; border-radius: 3px; background: var(--pc); min-width: 2px; }
+.ob-bar.err { background: var(--bad); }
+.ob-ms { position: absolute; top: 4px; font-size: 10px; color: var(--ink-2); white-space: nowrap; }
+.ob-feedback { margin-top: 12px; padding: 10px 14px; border-radius: 10px; background: var(--sunken); font-size: 14px; }
+.ob-feedback.good { background: var(--good-bg); color: color-mix(in srgb, var(--good) 70%, var(--ink)); }
+.ob-feedback.bad { background: var(--bad-bg); color: color-mix(in srgb, var(--bad) 75%, var(--ink)); }
+.ob-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 14px; }
+.ob-pillar { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+.ob-pillar p { margin: 6px 0; font-size: 13.5px; } .ob-pillar p.mono { font: 11.5px var(--mono); white-space: pre-wrap; }
+.ob-pillar small { color: var(--ink-2); }
+@media (max-width: 560px) { .ob-row { grid-template-columns: 50% 50%; } .ob-axis { margin-left: 50%; } .ob-svc { display: none; } }
+.ob-ms.in { color: #fff; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
