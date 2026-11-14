@@ -12,11 +12,13 @@
 <body>
 <header class="topbar"><div class="wrap" id="top"></div></header>
 <main class="wrap">
-  <div class="hero">
+  <div class="hero ai">
     <div class="eyebrow">An interactive course</div>
-    <h1>How apps are actually built</h1>
+    <h1>How apps are <span class="grad">actually built</span></h1>
     <p>Start with a single request. End with load balancers, queues, databases, LLM agents and MCP servers. Every chapter is a simulation you poke: predict what happens, run it, then take the real code home.</p>
+    <div class="hero-stats" id="hero-stats"></div>
   </div>
+  <nav class="jump" id="jump" aria-label="Jump to a level"></nav>
   <div class="ladder" id="ladder" aria-label="Course map"></div>
 </main>
 <footer class="site"><div class="wrap">App Anatomy. Runs entirely in your browser; progress is saved on this device only.</div></footer>
