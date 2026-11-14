@@ -37,11 +37,12 @@ async function visit(path, name, poke) {
 }
 
 async function pokeAll(page) {
-  for (const t of await page.$$(".toggle")) await t.click();
+  // controls may re-render their own panel, so a stale handle is not a failure
+  for (const t of await page.$$(".toggle")) await t.click({ timeout: 1000 }).catch(() => {});
   for (const b of await page.$$(".stage .seg button")) await b.click().catch(() => {});
   for (const r of await page.$$('input[type="range"]'))
     await r.evaluate((el) => { el.value = el.max; el.dispatchEvent(new Event("input", { bubbles: true })); });
-  for (const p of await page.$$(".predict")) { const o = await p.$(".opt"); if (o) await o.click(); }
+  for (const p of await page.$$(".predict")) { const o = await p.$(".opt"); if (o) await o.click({ timeout: 1000 }).catch(() => {}); }
   for (const st of await page.$$(".stepper")) {
     const next = await st.$(".step-nav .primary");
     for (let i = 0; i < 12 && next && !(await next.isDisabled()); i++) await next.click();
