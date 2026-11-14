@@ -149,7 +149,7 @@ export default function (root, { id }) {
   });
 
   root.append(
-    section(null, prose(`<p>One server can only do so much. Put several behind a <b>load balancer</b> and it decides, for every request, which server gets it. That decision sounds trivial until one server gets slow or dies. Below, requests (blue) flow from the balancer to servers, wait in a queue (orange) and come back green, or red if they failed.</p>`)),
+    section(null, prose(`<p>One server can only do so much. Put several behind a <b>load balancer</b> and it decides, for every request, which server gets it. That decision sounds trivial until one server gets slow or dies. Below, requests (teal dots) flow from the balancer to servers, wait in a queue (orange) and come back green, or red if they failed.</p>`)),
     section("Run the cluster",
       h("div.stage",
         h("div.stage-controls",
