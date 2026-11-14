@@ -238,3 +238,28 @@ footer.site { border-top: 1px solid var(--line); color: var(--ink-3); font-size:
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 
 mark { background: color-mix(in srgb, var(--c4) 35%, transparent); color: inherit; border-radius: 3px; padding: 0 1px; }
+
+/* ---------- transactions ---------- */
+.tx-story { margin: 0 0 12px; color: var(--ink-2); }
+.tx-grid { display: grid; gap: 4px; margin-top: 12px; font: 13px var(--mono); }
+.tx-row { display: grid; grid-template-columns: 28px 1fr 1fr; gap: 8px; align-items: stretch; transition: opacity .25s, transform .25s; }
+.tx-row.tx-hidden { opacity: .12; transform: translateY(2px); }
+.tx-head { font: 600 12px var(--sans, inherit); color: var(--ink-2); text-transform: uppercase; letter-spacing: .04em; }
+.tx-n { color: var(--ink-2); text-align: right; padding-top: 6px; }
+.tx-cell { min-height: 30px; }
+.tx-op { display: block; padding: 6px 10px; border-radius: 8px; background: var(--sunken); border: 1px solid var(--line); }
+.tx-cell.t1 .tx-op { border-left: 3px solid var(--c1); }
+.tx-cell.t2 .tx-op { border-left: 3px solid var(--c2); }
+.tx-op small { display: block; font: 11.5px var(--sans, inherit); color: var(--ink-2); margin-top: 2px; }
+.tx-op.bad { background: color-mix(in srgb, var(--bad) 12%, var(--surface)); border-color: var(--bad); }
+.tx-op.abort { background: color-mix(in srgb, var(--warn, #d97706) 14%, var(--surface)); }
+.tx-op.ok { background: color-mix(in srgb, var(--good) 12%, var(--surface)); }
+.tx-op.skip { opacity: .5; }
+.tx-verdict { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--sunken); font-weight: 600; }
+.tx-verdict.ok, .tx-verdict.abort { background: color-mix(in srgb, var(--good) 14%, var(--surface)); color: color-mix(in srgb, var(--good) 70%, var(--ink)); }
+.tx-verdict.bad { background: color-mix(in srgb, var(--bad) 14%, var(--surface)); color: color-mix(in srgb, var(--bad) 75%, var(--ink)); }
+.tx-pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 12px; font-weight: 600; }
+.tx-pill.bad { background: color-mix(in srgb, var(--bad) 16%, var(--surface)); color: var(--bad); }
+.tx-pill.ok { background: color-mix(in srgb, var(--good) 16%, var(--surface)); color: color-mix(in srgb, var(--good) 75%, var(--ink)); }
+.tx-pill.abort { background: color-mix(in srgb, var(--c1) 14%, var(--surface)); color: color-mix(in srgb, var(--c1) 75%, var(--ink)); }
+@media (max-width: 560px) { .tx-grid { font-size: 11.5px; } .tx-row { grid-template-columns: 18px 1fr 1fr; gap: 4px; } }
