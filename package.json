@@ -1,0 +1,10 @@
+{
+  "name": "app-anatomy",
+  "private": true,
+  "type": "module",
+  "description": "Learn how every kind of app is built, through simulations you can poke",
+  "scripts": {
+    "dev": "node serve.mjs",
+    "test": "node test/smoke.mjs"
+  }
+}
