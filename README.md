@@ -14,10 +14,13 @@ Start with a single request. End with load balancers, queues, databases, LLM age
 | **1 · A normal app** | Anatomy of a CRUD app (layers, N+1) · Why some queries are instant (B-trees, composite indexes) · Who are you? (sessions vs real WebCrypto JWTs, OAuth + PKCE) |
 | **2 · System design** | Caching and the stampede · Load balancers · Queues and workers (retry storms, DLQs) · Rate limiting (fixed, sliding, token bucket) |
 | **3 · Distributed systems** | Sharding and consistent hashing (keys that move, virtual nodes) · Replicas and quorums (N/R/W, stale reads, partitions) · Consensus (a live five-server Raft) · Tail latency and fan-out (p99, hedged requests) · Retries, backoff and circuit breakers (metastable failure) · Idempotency (exactly-once effects, the outbox) · Back-of-the-envelope design (capacity estimates, a URL shortener walkthrough) |
-| **4 · Low-level design** | State machines (guards, event replay) · Patterns that earn their keep (adapter, strategy, observer) |
-| **5 · Real-time and offline** | Polling, SSE or WebSockets? · Offline edits that merge (last-write-wins vs an OR-Set CRDT) |
-| **6 · AI apps** | How an LLM writes (tokens, temperature, top-p, context budget) · RAG in the browser · The agent loop · MCP (a working JSON-RPC server in the page) · Streaming generative UI |
-| **7 · Every kind of app** | The app atlas: 13 architectures from a static blog to ride-hailing, payments, multiplayer games and AI agents |
+| **4 · Running it for real** | Transactions and isolation levels (lost updates, dirty reads, write skew in a tiny MVCC database) · Deploys that can't take you down (all-at-once, rolling, blue/green, canary analysis, expand-contract migrations) · Finding what's slow (a trace waterfall: N+1, locks, slow dependencies, retries, serial calls) |
+| **5 · Low-level design** | State machines (guards, event replay) · Patterns that earn their keep (adapter, strategy, observer) |
+| **6 · Real-time and offline** | Polling, SSE or WebSockets? · Offline edits that merge (last-write-wins vs an OR-Set CRDT) |
+| **7 · AI apps** | How an LLM writes (tokens, temperature, top-p, context budget) · RAG in the browser · The agent loop · MCP (a working JSON-RPC server in the page) · Streaming generative UI |
+| **8 · Every kind of app** | The app atlas: 13 architectures from a static blog to ride-hailing, payments, multiplayer games and AI agents |
+
+![The transactions chapter: write skew under snapshot isolation leaves nobody on call](docs/transactions.png)
 
 ![The consensus chapter: five Raft servers split by a network partition, two leaders, and only the majority side committing](docs/consensus.png)
 
