@@ -57,7 +57,7 @@ function loopDiagram(stage) {
 
 export default function (root, { id }) {
   let messages, pending, stage, calls, done;
-  const transcript = h("div", { style: { display: "grid", gap: "8px", maxHeight: "460px", overflow: "auto" } });
+  const transcript = h("div", { style: { display: "flex", flexDirection: "column", gap: "8px", maxHeight: "460px", overflow: "auto" } });
   const controls = h("div", { style: { display: "grid", gap: "10px" } });
   const dia = h("div");
   const st = stats([{ label: "Model calls" }, { label: "Messages in history" }, { label: "History size (≈ tokens)" }, { label: "Status" }]);
@@ -104,7 +104,7 @@ export default function (root, { id }) {
     transcript.replaceChildren(...messages.map((m, i) => {
       const last = i === messages.length - 1;
       const shown = { role: m.role, content: m.content };
-      return h("div", { style: { border: `1px solid ${last ? "var(--accent)" : "var(--line)"}`, borderRadius: "10px", background: "var(--surface)", padding: "8px 10px" } },
+      return h("div", { style: { flex: "none", border: `1px solid ${last ? "var(--accent)" : "var(--line)"}`, borderRadius: "10px", background: "var(--surface)", padding: "8px 10px" } },
         h("div.row", { style: { justifyContent: "space-between" } }, h("b", m.role === "user" ? (Array.isArray(m.content) ? "user (tool results from your code)" : "user") : "assistant"), m.stop_reason ? h("span.pill" + (m.stop_reason === "end_turn" ? ".good" : ".warn"), `stop_reason: ${m.stop_reason}`) : null),
         h("pre", { style: { margin: "6px 0 0", font: "12px/1.5 var(--mono)", whiteSpace: "pre-wrap", wordBreak: "break-word" } }, JSON.stringify(shown.content, null, 1)));
     }));
