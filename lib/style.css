@@ -288,3 +288,17 @@ mark { background: color-mix(in srgb, var(--c4) 35%, transparent); color: inheri
 .ob-pillar small { color: var(--ink-2); }
 @media (max-width: 560px) { .ob-row { grid-template-columns: 50% 50%; } .ob-axis { margin-left: 50%; } .ob-svc { display: none; } }
 .ob-ms.in { color: #fff; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+
+/* ---------- chapter navigation: reading progress and on-this-page chips ---------- */
+.read-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 50; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--c1), var(--c6, var(--c1)), var(--c3)); pointer-events: none; }
+.read-time { margin-left: 4px; font: 12px var(--mono); color: var(--ink-2); }
+.read-time::before { content: "·"; margin-right: 8px; }
+.toc { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 10px 0; margin: 8px 0 4px;
+  background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.toc::-webkit-scrollbar { display: none; }
+.toc-l { flex: none; font: 600 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); margin-right: 4px; }
+.toc-chip { flex: none; font-size: 13px; padding: 5px 11px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); text-decoration: none; white-space: nowrap; transition: background .15s, color .15s, border-color .15s; }
+.toc-chip:hover { color: var(--ink); border-color: color-mix(in srgb, var(--accent, var(--c1)) 40%, var(--line)); }
+.toc-chip.on { color: var(--accent-ink, #fff); background: var(--accent, var(--c1)); border-color: transparent; }
+section.block > h2 { scroll-margin-top: 64px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
