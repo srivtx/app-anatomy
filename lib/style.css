@@ -823,3 +823,27 @@ a.ex-card:hover { transform: translate(-2px, -2px); border-color: color-mix(in s
 .toc { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
 
 @media (min-width: 901px) { .viz-wrap { margin-top: 116px; } }
+
+/* ======================== quick check at the end of a chapter ======================== */
+.ck { display: grid; gap: 14px; margin-top: 14px; --lc2: var(--lc, var(--accent)); }
+.ck-wait { color: var(--ink-3); font: 500 14px var(--pixel); }
+.ck-q { padding: 18px 20px; border-radius: 16px; border: 1.5px solid var(--line); background: var(--surface); transition: border-color .2s; }
+.ck-q.is-right { border-color: color-mix(in srgb, var(--good) 55%, var(--line)); }
+.ck-q.is-wrong { border-color: color-mix(in srgb, var(--bad, #d9534f) 45%, var(--line)); }
+.ck-n { font: 600 12px var(--pixel); color: var(--ink-3); letter-spacing: .05em; }
+.ck-qt { font-size: 17px; font-weight: 600; line-height: 1.4; margin: 4px 0 12px; color: var(--ink); }
+.ck .qz-opt { padding: 10px 14px; font-size: 14.5px; }
+.ck .qz-opt:disabled { cursor: default; }
+.ck .qz-opt.wrong { border-color: var(--bad, #d9534f); background: color-mix(in srgb, var(--bad, #d9534f) 8%, var(--surface)); }
+.ck .qz-opt.wrong .qz-k { background: var(--bad, #d9534f); color: #fff; }
+.ck .qz-opt.right { border-color: var(--good); background: color-mix(in srgb, var(--good) 9%, var(--surface)); }
+.ck-why:not(:empty) { margin-top: 12px; padding: 10px 14px; border-radius: 10px; background: var(--sunken); font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+.ck-why p { display: inline; margin: 0; }
+.ck-score { display: none; }
+.ck-score.on { display: flex; gap: 18px; align-items: center; padding: 16px 20px; border-radius: 16px; border: 1.5px dashed color-mix(in srgb, var(--lc2) 45%, var(--line)); background: color-mix(in srgb, var(--lc2) 6%, var(--surface)); }
+.ck-m { width: 96px; flex: none; }
+.ck-score b { font: 600 20px var(--pixel); }
+.ck-score p { margin: 2px 0 10px; color: var(--ink-2); }
+.ck-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.ck-btns .btn { text-decoration: none; }
+@media (max-width: 560px) { .ck-q { padding: 14px; } .ck-m { width: 64px; } }
