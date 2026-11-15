@@ -51,7 +51,11 @@ async function pokeAll(page) {
   await page.waitForTimeout(1200);
 }
 
-if (!only) await visit("/", "home");
+if (!only || only === "quiz") {
+  if (!only) await visit("/", "home");
+  await visit("/quiz", "quiz", async (p) => { await p.click(".qz-word"); await p.click(".qz-go"); await p.click(".qz-opt"); await p.waitForTimeout(200); });
+  await visit("/settings", "settings", async (p) => { for (const b of await p.$$(".set-seg button")) await b.click().catch(() => {}); });
+}
 for (const c of ALL.filter((c) => c.live && (!only || c.id === only))) await visit(`/learn?c=${c.id}`, c.id, pokeAll);
 await browser.close();
 server.kill();
