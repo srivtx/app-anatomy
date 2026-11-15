@@ -406,15 +406,11 @@ body.is-lesson .topbar .wrap { max-width: 1480px; }
 .cchip.new { border-color: color-mix(in srgb, var(--lc) 50%, var(--line)); color: var(--ink); }
 .cchip.ok { border-color: color-mix(in srgb, var(--good) 45%, var(--line)); color: var(--good); }
 .cover-art { width: 100%; aspect-ratio: 26 / 19; }
-.cover-art .m-edges path { stroke: var(--lc); }
-.cover-art .m-nodes circle { fill: var(--surface); stroke: var(--lc); stroke-width: 2; }
-.cover-art .m-nodes circle.on { fill: var(--lc); }
-@media (prefers-reduced-motion: no-preference) {
-  .cover-art .m-nodes circle.on { animation: pulse 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-  .cover-art .m-nodes circle.on:nth-child(2n) { animation-delay: 1.1s; }
-  .cover-art .m-nodes circle.on:nth-child(3n) { animation-delay: 2.2s; }
-}
-@keyframes pulse { 50% { transform: scale(1.25); opacity: .8; } }
+.cover-art { display: grid; place-items: center; }
+.cover-art svg.emblem { width: auto; height: auto; max-width: 78%; max-height: 100%; image-rendering: pixelated; filter: drop-shadow(0 12px 14px color-mix(in srgb, var(--lc) 30%, transparent)); }
+:root:not([data-motion="reduce"]) .cover-art svg.emblem { animation: float 4s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(-5px); } }
+@media (prefers-reduced-motion: reduce) { .cover-art svg.emblem { animation: none !important; } }
 @media (max-width: 640px) { .ch-cover { grid-template-columns: 1fr; padding: 22px 18px; } .cover-art { display: none; } }
 
 /* at a glance */
@@ -766,7 +762,7 @@ svg.px { display: block; width: 100%; height: auto; image-rendering: pixelated; 
 .ex-bar.big { height: 8px; width: 180px; }
 /* the chosen level */
 .ex-panel { min-width: 0; border-radius: 22px; border: 1px solid color-mix(in srgb, var(--lc) 30%, var(--line)); background: var(--surface); overflow: hidden; scroll-margin-top: 12px; }
-.ex-ph { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 16px; align-items: end; padding: 26px 28px 24px; isolation: isolate;
+.ex-ph { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 140px; gap: 16px; align-items: end; padding: 26px 28px 24px; isolation: isolate;
   background: radial-gradient(110% 140% at 100% 0%, color-mix(in srgb, var(--lc) 28%, transparent), transparent 60%), linear-gradient(170deg, color-mix(in srgb, var(--lc) 12%, var(--surface)), var(--surface)); border-bottom: 1px solid color-mix(in srgb, var(--lc) 25%, var(--line)); }
 .ex-ph::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background-image: linear-gradient(color-mix(in srgb, var(--lc) 14%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--lc) 14%, transparent) 1px, transparent 1px);
@@ -776,7 +772,8 @@ svg.px { display: block; width: 100%; height: auto; image-rendering: pixelated; 
 .ex-prog { display: flex; align-items: center; gap: 10px; margin: 16px 0; }
 .ex-prog small { font: 500 13px var(--pixel); color: var(--ink-2); }
 .ex-ph .btn { text-decoration: none; display: inline-block; }
-.ex-ph-fl { width: 110px; justify-self: end; }
+.ex-ph-fl { width: 130px; justify-self: end; align-self: center; }
+.ex-ph-fl svg { width: 100%; height: auto; image-rendering: pixelated; filter: drop-shadow(0 10px 12px color-mix(in srgb, var(--lc) 30%, transparent)); }
 .ex-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; padding: 18px; }
 .ex-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px 12px; border-radius: 16px; border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); text-decoration: none; min-width: 0; transition: transform .15s, border-color .15s, box-shadow .15s; }
 a.ex-card:hover { transform: translate(-2px, -2px); border-color: color-mix(in srgb, var(--lc) 60%, var(--line)); box-shadow: 4px 4px 0 color-mix(in srgb, var(--lc) 40%, transparent); }
