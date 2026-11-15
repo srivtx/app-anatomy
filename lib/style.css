@@ -626,42 +626,69 @@ svg.px { display: block; width: 100%; height: auto; image-rendering: pixelated; 
   :root:not([data-motion="reduce"]) .mascot-wrap svg.mascot { animation: bob 2.6s steps(2, end) infinite; }
 }
 @keyframes bob { 50% { transform: translateY(-3px); } }
-/* home: mascot over the hero demo, and the bench */
+/* home: the mascot sits on top of the hero demo */
 .viz-wrap { position: relative; }
-.hero-mascot { position: absolute; left: -46px; top: -118px; display: flex; align-items: flex-end; gap: 6px; pointer-events: none; }
-.hero-mascot > div:last-child { width: 150px; }
-.hero-mascot .bubble { order: 2; margin-bottom: 60px; font-size: 13px; max-width: 220px; }
-@media (max-width: 860px) { .hero-mascot { position: static; margin-top: 12px; } }
-.bench { margin: 18px 0 34px; padding: 22px 24px; border-radius: 22px; border: 1px solid var(--line); position: relative; overflow: hidden;
-  background: var(--surface); }
+.hero-mascot { position: absolute; right: 22px; bottom: calc(100% - 6px); display: flex; align-items: flex-end; gap: 10px; pointer-events: none; z-index: 2; }
+.hero-mascot > div:last-child { width: 132px; }
+.hero-mascot .bubble { position: absolute; right: 104px; bottom: 74px; width: max-content; max-width: 230px; font-size: 13px; }
+.hero-mascot .bubble::after { left: auto; right: 18px; }
+.viz-wrap > figure, .viz-wrap > #hero-viz { position: relative; z-index: 1; }
+
+/* home: your bench. Text on top; a desk scene with the mascot beside it; counters; a garden strip */
+.bench { margin: 18px 0 34px; padding: 26px 28px 22px; border-radius: 22px; border: 1px solid var(--line); position: relative; overflow: hidden; background: var(--surface);
+  display: grid; grid-template-columns: minmax(0, 1fr) 280px; grid-template-areas: "text text" "scene side" "garden garden"; gap: 8px 28px; }
 .bench::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
   background-image: radial-gradient(color-mix(in srgb, var(--ink) 18%, transparent) 1px, transparent 1.2px); background-size: 14px 14px;
   -webkit-mask-image: linear-gradient(180deg, #000, transparent 60%); mask-image: linear-gradient(180deg, #000, transparent 60%); }
-.bench-h { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; position: relative; }
-.bench-h .muted { margin: 4px 0 0; max-width: 52ch; }
-.bench-mascot { display: flex; align-items: flex-end; gap: 8px; }
-.bench-mascot > div:last-child { width: 104px; flex: none; }
-.bench-mascot .bubble { margin-bottom: 44px; font-size: 13.5px; max-width: 280px; }
-.bench-body { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 22px; align-items: end; margin-top: 10px; position: relative; }
+.bench-body { display: contents; }
+.bench-h { grid-area: text; position: relative; }
+.bench-h h3 { font: 500 clamp(24px, 2.8vw, 32px)/1.15 var(--serif); letter-spacing: -0.01em; margin: 4px 0 6px; }
+.bench-h .muted { margin: 0; max-width: 60ch; }
+.scene { grid-area: scene; position: relative; display: flex; align-items: flex-end; justify-content: center; gap: 0; min-height: 0; padding-top: 6px; }
+.desk-wrap { flex: 0 1 540px; min-width: 0; filter: drop-shadow(0 14px 18px rgba(0,0,0,.12)); }
+.desk-wrap svg { width: 100%; height: auto; image-rendering: pixelated; display: block; }
+.bench-h { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }
+.bench-mascot { display: flex; align-items: flex-end; gap: 6px; flex: none; }
+.bench-mascot > div:last-child { width: 132px; flex: none; }
+.bench-mascot .bubble { margin-bottom: 64px; max-width: 260px; font-size: 13px; }
+.bench-side { grid-area: side; align-self: center; display: grid; gap: 10px; position: relative; }
+.bench-item { display: grid; grid-template-columns: 72px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; align-items: center; padding: 12px 14px; border-radius: 14px;
+  background: color-mix(in srgb, var(--surface) 85%, transparent); border: 1px solid var(--line); box-shadow: 3px 3px 0 color-mix(in srgb, var(--ink) 7%, transparent); }
+.bench-item > :first-child { grid-row: 1 / span 2; justify-self: center; }
+.bench-item b { font: 600 20px/1.1 var(--pixel); align-self: end; }
+.bench-item span { font-size: 12.5px; color: var(--ink-2); align-self: start; }
+.cans { display: flex; gap: 2px; align-items: flex-end; }
+.can-i { width: 14px; }
+.can-i.ghost { opacity: .35; }
+.cash-i { width: 64px; }
+.fl-i { width: 30px; }
+.garden-wrap { grid-area: garden; position: relative; margin-top: 18px; }
 .garden { display: grid; grid-template-columns: repeat(var(--n, 16), minmax(0, 1fr)); gap: 2px; align-items: end; padding: 0 6px; border-bottom: 10px solid #8a5a3b; border-radius: 0 0 6px 6px; box-shadow: inset 0 -6px 0 #b07a50; }
-@media (max-width: 760px) { .garden { grid-template-columns: repeat(8, minmax(0, 1fr)); } }
 .plot { display: grid; justify-items: center; text-decoration: none; color: var(--ink-3); font: 600 12px var(--pixel); transition: transform .15s; }
 .plot > div { width: 100%; max-width: 48px; }
-.plot:hover { transform: translateY(-3px); color: var(--ink); }
-.bench-side { display: grid; gap: 10px; }
-.bench-item { display: grid; grid-template-columns: 96px auto; grid-template-rows: auto auto; column-gap: 12px; align-items: center; padding: 10px 12px; border-radius: 14px; background: color-mix(in srgb, var(--surface) 85%, transparent); border: 1px solid var(--line); }
-.bench-item > :first-child { grid-row: 1 / span 2; }
-.bench-item b { font: 600 20px/1.1 var(--pixel); }
-.bench-item b.big { grid-row: 1; font-size: 26px; }
-.bench-item span { font-size: 12.5px; color: var(--ink-2); }
-.cans { display: flex; gap: 2px; align-items: flex-end; }
-.can-i { width: 15px; }
-.can-i.ghost { opacity: .35; }
-.cash-i { width: 70px; }
-@media (max-width: 860px) { .bench-body { grid-template-columns: 1fr; } .bench-h { flex-direction: column; align-items: flex-start; } }
-.garden-hint { margin: 8px 0 0; font: 500 13px var(--pixel); color: var(--ink-3); }
 .plot span { order: -1; margin-bottom: 2px; }
+.plot:hover { transform: translateY(-3px); color: var(--ink); }
+.garden-hint { margin: 8px 0 0; font: 500 13px var(--pixel); color: var(--ink-3); }
 .bubble a { white-space: nowrap; }
+@media (max-width: 900px) {
+  .bench { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "scene" "side" "garden"; padding: 20px 16px 18px; }
+  .bench-h { flex-direction: column; align-items: stretch; gap: 12px; }
+  .bench-mascot { justify-content: flex-end; }
+  .bench-side { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+  .hero-mascot { position: static; justify-content: flex-end; margin: 0 0 -8px; }
+  .hero-mascot > div:last-child { width: 96px; }
+  .hero-mascot .bubble { right: 84px; bottom: 50px; }
+}
+@media (max-width: 560px) {
+  .scene { padding-top: 0; }
+  .bench-h { flex-direction: column; align-items: stretch; gap: 10px; }
+  .bench-mascot > div:last-child { width: 92px; }
+  .bench-mascot .bubble { flex: 1; margin-bottom: 44px; }
+  .bench-side { grid-template-columns: minmax(0, 1fr); }
+  .bench-item { grid-template-columns: 56px minmax(0, 1fr); padding: 10px 12px; }
+  .plot { font-size: 9px; }
+  .bubble a { white-space: normal; }
+}
 /* chapter: sidebar flowers, cover flower, the finish card */
 .side-list a, .side-list .soon { grid-template-columns: 38px minmax(0, 1fr) 18px !important; }
 .side-fl { width: 18px; align-self: end; }
@@ -775,37 +802,6 @@ a.ex-card:hover { transform: translate(-2px, -2px); border-color: color-mix(in s
   .ex-b { width: 24px; height: 24px; }
   .ex-name b { font-size: 13px; }
 }
-/* bench: text and garden on the left, mascot and counters on the right */
-.bench { display: grid; grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "text mascot" "garden side"; gap: 14px 24px; align-items: end; }
-.bench-h, .bench-body { display: contents; }
-.bench-h > div:first-child { grid-area: text; align-self: start; position: relative; }
-.bench-mascot { grid-area: mascot; justify-self: end; position: relative; }
-.garden-wrap { grid-area: garden; position: relative; }
-.bench-side { grid-area: side; position: relative; }
-@media (max-width: 860px) {
-  .bench { grid-template-columns: 1fr; grid-template-areas: "text" "mascot" "garden" "side"; }
-  .bench-mascot { justify-self: stretch; }
-  .bench-mascot > div:last-child { width: 80px; }
-  .bench-mascot .bubble { flex: 1; margin-bottom: 30px; }
-}
-
-.set-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
-.set-mascot { width: 130px; flex: none; }
-@media (max-width: 640px) { .set-mascot { display: none; } }
-.set-stat { position: relative; }
-.set-ico { position: absolute; right: 10px; bottom: 10px; width: 22px; opacity: .9; }
-
-/* app hero: room above the diagram for the mascot */
-@media (min-width: 861px) { .viz-wrap { margin-top: 120px; } }
-
-/* bench: a voxel desk that fills up as you learn */
-.bench { grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "text mascot" "desk side" "garden garden"; }
-.desk-wrap { grid-area: desk; max-width: 560px; width: 100%; justify-self: center; filter: drop-shadow(0 14px 18px rgba(0,0,0,.12)); }
-.desk-wrap svg { width: 100%; height: auto; image-rendering: pixelated; }
-.bench-side { align-self: center; }
-.cash-i { width: 64px; }
-@media (max-width: 860px) { .bench { grid-template-areas: "text" "mascot" "desk" "side" "garden"; } }
-
 /* ======================== lesson sidebar v2: a level header, no dropdown, no visible scrollbars ======================== */
 .lesson-side, .lesson-rail { scrollbar-width: none; overscroll-behavior: contain; padding-inline: 3px 6px; }
 .lesson-side::-webkit-scrollbar, .lesson-rail::-webkit-scrollbar { display: none; }
@@ -825,3 +821,5 @@ a.ex-card:hover { transform: translate(-2px, -2px); border-color: color-mix(in s
 @media (max-width: 560px) { .ex-act-h small { display: none; } .ex-act-h { padding-bottom: 8px; } .ex-act-l { gap: 6px; } .ex-lv { min-height: 46px; } .ex-h .muted { font-size: 15px; } }
 .ex-act-l { align-content: start; }
 .toc { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent); }
+
+@media (min-width: 901px) { .viz-wrap { margin-top: 116px; } }
