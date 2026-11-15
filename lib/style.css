@@ -847,3 +847,4 @@ a.ex-card:hover { transform: translate(-2px, -2px); border-color: color-mix(in s
 .ck-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 .ck-btns .btn { text-decoration: none; }
 @media (max-width: 560px) { .ck-q { padding: 14px; } .ck-m { width: 64px; } }
+@media (max-width: 560px) { .stage-controls { gap: 10px 12px; padding: 12px; } .stage-body { padding: 12px; } }
