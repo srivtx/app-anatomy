@@ -869,3 +869,32 @@ footer.site::before { content: ""; position: absolute; left: 0; right: 0; top: 3
 .qz-emb svg { width: 100%; height: auto; image-rendering: pixelated; }
 .qz-card .qz-tags { padding-right: 64px; }
 @media (max-width: 560px) { .qz-emb { width: 38px; right: 14px; top: 14px; } .qz-card .qz-tags { padding-right: 46px; } }
+
+/* chapter not found, and the loading state */
+.nf { display: flex; align-items: center; gap: 36px; max-width: 820px; margin: 70px auto 90px; padding: 34px 36px; border-radius: 24px; border: 1.5px solid var(--line); background: var(--surface); box-shadow: 6px 6px 0 color-mix(in srgb, var(--accent) 15%, transparent); }
+.nf-m { width: 170px; flex: none; }
+.nf h1 { font: 500 clamp(30px, 4vw, 44px)/1.1 var(--serif); margin: 6px 0 10px; }
+.nf .lede { margin: 0 0 18px; }
+.nf-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.nf-btns .btn { text-decoration: none; }
+@media (max-width: 640px) { .nf { flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px 18px; margin: 30px 0 60px; } .nf-m { width: 120px; } }
+.ch-loading { display: flex; align-items: center; gap: 12px; font: 500 14px var(--pixel); color: var(--ink-3); }
+.ch-load-m { width: 64px; display: block; }
+:root:not([data-motion="reduce"]) .ch-load-m svg { animation: bob 1.2s steps(2, end) infinite; }
+
+/* phone top bar: one row, short labels */
+.l-short { display: none; }
+@media (max-width: 600px) {
+  .topbar .wrap { flex-wrap: nowrap; gap: 8px; padding-block: 10px; }
+  .topnav { gap: 14px; font-size: 14px; }
+  .l-long { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .l-short { display: inline; }
+  .nav-gh { display: none; }
+  .brand { font-size: 16px !important; gap: 8px; }
+}
+@media (max-width: 360px) { .brand span { display: none; } }
+
+/* scroll reveal (set up in topbar.js) */
+.rv { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1); }
+.rv.in { opacity: 1; transform: none; }
+@media print { .rv { opacity: 1 !important; transform: none !important; } }
