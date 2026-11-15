@@ -846,3 +846,20 @@ a.ex-card:hover { transform: translate(-2px, -2px); border-color: color-mix(in s
 .ck-btns .btn { text-decoration: none; }
 @media (max-width: 560px) { .ck-q { padding: 14px; } .ck-m { width: 64px; } }
 @media (max-width: 560px) { .stage-controls { gap: 10px 12px; padding: 12px; } .stage-body { padding: 12px; } }
+
+/* footer: a pixel garden on the ground line */
+footer.site { position: relative; margin-top: 40px; padding-block: 0 30px; border-top: 0; }
+footer.site::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; height: 8px; background: #8a5a3b; box-shadow: inset 0 3px 0 #b07a50; }
+.foot-garden { display: flex; justify-content: space-between; align-items: flex-end; height: 34px; padding: 0 2%; position: relative; }
+.foot-garden span { width: 26px; display: block; }
+.foot-garden span:nth-child(3n) { width: 20px; }
+.foot-garden svg { width: 100%; height: auto; display: block; }
+.foot-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 26px; }
+.foot-row .brand { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); font: 600 15px var(--pixel); }
+.foot-row .brand svg { width: 24px; height: 24px; }
+.foot-links { display: flex; gap: 6px 18px; flex-wrap: wrap; }
+.foot-links a { color: var(--ink-2); text-decoration: none; font-size: 14px; }
+.foot-links a:hover { color: var(--ink); }
+.foot-note { margin: 12px 0 0; color: var(--ink-3); font-size: 13px; }
+@media (max-width: 560px) { .foot-garden span:nth-child(n+8) { display: none; } }
+.set-stat { position: relative; padding-right: 44px; }
