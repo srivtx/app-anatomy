@@ -345,3 +345,15 @@ a.card:hover .t { color: color-mix(in srgb, var(--lc, var(--accent)) 70%, var(--
 @media (prefers-reduced-motion: reduce) { .card, .jump-chip { transition: none; } a.card:hover, .jump-chip:hover { transform: none; } }
 @media (max-width: 720px) { .hs b { font-size: 22px; } .level::before { width: 3px; } }
 
+
+/* migrations: the plan's steps with rollback notes */
+.mg-steps { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; counter-reset: mg; }
+.mg-steps li { counter-increment: mg; display: grid; grid-template-columns: 28px 40px minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 13.5px; }
+.mg-steps li::before { content: counter(mg); font: 600 11px var(--mono); color: var(--ink-2); display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--sunken); }
+.mg-t { font: 500 12px var(--mono); color: var(--ink-3); }
+.mg-what { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mg-what i { flex: none; width: 10px; height: 10px; border-radius: 3px; }
+.mg-rb { font-size: 12.5px; color: var(--ink-2); text-align: right; }
+.mg-rb.ok { color: var(--good); }
+.mg-rb.no { color: var(--bad); }
+@media (max-width: 640px) { .mg-steps li { grid-template-columns: 28px 40px minmax(0, 1fr); } .mg-rb { grid-column: 3; text-align: left; } }
