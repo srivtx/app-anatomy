@@ -800,3 +800,11 @@ a.ex-card:hover { transform: translate(-2px, -2px); border-color: color-mix(in s
 
 /* app hero: room above the diagram for the mascot */
 @media (min-width: 861px) { .viz-wrap { margin-top: 120px; } }
+
+/* bench: a voxel desk that fills up as you learn */
+.bench { grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "text mascot" "desk side" "garden garden"; }
+.desk-wrap { grid-area: desk; max-width: 560px; width: 100%; justify-self: center; filter: drop-shadow(0 14px 18px rgba(0,0,0,.12)); }
+.desk-wrap svg { width: 100%; height: auto; image-rendering: pixelated; }
+.bench-side { align-self: center; }
+.cash-i { width: 64px; }
+@media (max-width: 860px) { .bench { grid-template-areas: "text" "mascot" "desk" "side" "garden"; } }
