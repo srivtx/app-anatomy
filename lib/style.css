@@ -937,3 +937,13 @@ footer.site::before { content: ""; position: absolute; left: 0; right: 0; top: 3
 .bench { grid-template-areas: "text text" "scene side" "garden garden" "stick stick"; }
 @media (max-width: 900px) { .bench { grid-template-areas: "text" "scene" "side" "garden" "stick"; } }
 .set-card .stickers { margin: 4px 0 18px; }
+
+/* step labels: a pixel glyph for what the step holds, and a word for it */
+.step-l span::before { display: none; }
+.step-l .glyph { flex: none; margin-right: 1px; }
+.step-l em { font-style: normal; margin-left: 6px; padding-left: 9px; border-left: 1px solid var(--line); color: var(--ink-3); letter-spacing: .1em; }
+.step-l[data-k="sim"] em, .step-l[data-k="build"] em { color: var(--ink-2); }
+@media print { .rv { opacity: 1 !important; transform: none !important; } .read-progress, .lesson-rail, .lesson-side, .topbar, .site-foot { display: none !important; } }
+.burst { position: fixed; z-index: 60; width: 0; height: 0; pointer-events: none; }
+.burst i { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; animation: burst .75s cubic-bezier(.2,.7,.3,1) forwards; }
+@keyframes burst { 0% { transform: translate(0,0) scale(1); opacity: 1; } 70% { opacity: 1; } 100% { transform: translate(var(--x), calc(var(--y) + 18px)) scale(.4); opacity: 0; } }
